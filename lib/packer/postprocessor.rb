@@ -9,13 +9,15 @@ module Packer
     DOCKER_SAVE = 'docker-save'
     DOCKER_TAG = 'docker-tag'
     VAGRANT = 'vagrant'
+    SHELL_LOCAL = 'shell-local'
 
     VALID_POST_PROCESSOR_TYPES = [
       DOCKER_IMPORT,
       DOCKER_PUSH,
       DOCKER_SAVE,
       DOCKER_TAG,
-      VAGRANT
+      VAGRANT,
+      SHELL_LOCAL
     ]
 
     class UnrecognizedPostProcessorTypeError < StandardError
@@ -30,6 +32,7 @@ module Packer
         DOCKER_PUSH   => Packer::PostProcessor::DockerPush,
         DOCKER_SAVE   => Packer::PostProcessor::DockerSave,
         DOCKER_TAG    => Packer::PostProcessor::DockerTag,
+        SHELL_LOCAL   => Packer::PostProcessor::ShellLocal,
         VAGRANT       => Packer::PostProcessor::Vagrant
       }.fetch(type).new
     end
