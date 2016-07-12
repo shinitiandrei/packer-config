@@ -31,6 +31,11 @@ describe '#inline' do
       postprocessor.data.delete('inline')
     end
 
+    it 'raise an error if it is empty' do
+      expect { postprocessor.inline('') }.to raise_error
+      postprocessor.data.delete('inline')
+    end
+
     it 'converts all commands to strings' do
       postprocessor.inline(some_array_of_ints)
       expect(postprocessor.data['inline']).to eq(some_array_of_ints.map(&:to_s))

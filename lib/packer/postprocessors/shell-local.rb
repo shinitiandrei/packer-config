@@ -6,7 +6,7 @@ module Packer
   class PostProcessor < Packer::DataObject
     class ShellLocal < PostProcessor
       def initialize
-        super()
+        super
         self.data['type'] = SHELL_LOCAL
         self.add_required(['inline', 'script', 'scripts'])
       end
